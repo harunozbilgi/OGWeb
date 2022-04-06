@@ -14,7 +14,7 @@ public static class ServiceExtensions
         services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
              configure =>
              {
-                 configure.MigrationsAssembly("MediaBalans.Persistence");
+                 configure.MigrationsAssembly("OGWeb.Infrastructure");
              })
             .EnableSensitiveDataLogging()
             .EnableDetailedErrors()
@@ -22,8 +22,6 @@ public static class ServiceExtensions
             {
                 warnings.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning);
             }));
-
-
         return services;
     }
 }

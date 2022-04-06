@@ -14,6 +14,11 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new AppSeoConfiguration());
+        modelBuilder.ApplyConfiguration(new AppSettingConfiguraiton());
+        modelBuilder.ApplyConfiguration(new OverViewConfiguration());
+        modelBuilder.ApplyConfiguration(new VideoConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkFileConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 
