@@ -18,12 +18,17 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
     {
         return await _context.Set<T>().ToListAsync();
     }
-
-    public async Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate, bool disableTracking = true)
+    public async Task<IReadOnlyList<T>> GetAllAsync(Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes)
     {
-        return await _context.Set<T>().Where(predicate).ToListAsync();
-    }
+        IQueryable<T> query = _context.Set<T>().AsNoTracking();
 
+        if (includes != null) query = includes.Aggregate(query, (current, include) => current.Include(include));
+
+        if (orderBy != null)
+            return await orderBy(query).ToListAsync();
+
+        return await query.ToListAsync();
+    }
     public async Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<Expression<Func<T, object>>> includes = null, bool disableTracking = true)
     {
         IQueryable<T> query = _context.Set<T>();
@@ -65,4 +70,6 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
         _context.Entry(entity).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
+
+
 }

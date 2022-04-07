@@ -5,8 +5,7 @@ namespace OGWeb.Core.Interfaces.Repositories;
 public interface IGenericRepositoryAsync<T> where T : class, new()
 {
     Task<IReadOnlyList<T>> GetAllAsync();
-    Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate, 
-        bool disableTracking = true);
+    Task<IReadOnlyList<T>> GetAllAsync(Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes);
     Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null,
                                     Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                                     List<Expression<Func<T, object>>> includes = null,
