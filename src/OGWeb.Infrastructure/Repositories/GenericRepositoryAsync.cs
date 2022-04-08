@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿ using Microsoft.EntityFrameworkCore;
 using OGWeb.Core.Interfaces.Repositories;
 using OGWeb.Infrastructure.Context;
 using System.Linq.Expressions;
@@ -70,6 +70,4 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
         _context.Entry(entity).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
-
-
 }
