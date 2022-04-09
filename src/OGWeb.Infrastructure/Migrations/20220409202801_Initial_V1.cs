@@ -115,7 +115,7 @@ namespace OGWeb.Infrastructure.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     SlugUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    datetime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     IsActived = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>

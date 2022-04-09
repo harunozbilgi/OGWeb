@@ -11,7 +11,7 @@ using OGWeb.Infrastructure.Context;
 namespace OGWeb.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220406094404_Initial_V1")]
+    [Migration("20220409202801_Initial_V1")]
     partial class Initial_V1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,8 +160,7 @@ namespace OGWeb.Infrastructure.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("datetime");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(250)

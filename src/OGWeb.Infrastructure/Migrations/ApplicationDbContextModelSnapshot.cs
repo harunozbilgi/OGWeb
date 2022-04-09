@@ -158,8 +158,7 @@ namespace OGWeb.Infrastructure.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("datetime");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(250)

@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using OGWeb.Core.Dtos;
 using OGWeb.Core.Entities;
@@ -10,12 +11,12 @@ namespace OGWeb.Core.Commands.Works;
 
 public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
 {
-    public string AppSeoCode { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public string SlugUrl { get; set; }
     public DateTime CreatedDate { get; set; }
     public bool? IsActived { get; set; }
+    public IFormFile Cover { get; set; }
+    public List<IFormFile> Files { get; set; }
 
     public class CreateWorkCommandHandler : IRequestHandler<CreateWorkCommand, CustomResponse<WorkDto>>
     {
@@ -38,7 +39,7 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
 
                 throw new Exception("no data");
             }
-            
+
             var work = _mapper.Map<Work>(request);
 
             var result = await _writeRepositoryManager.WorkRepository.CreateWorkAsync(work);

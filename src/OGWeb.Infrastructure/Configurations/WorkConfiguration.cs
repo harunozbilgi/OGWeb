@@ -14,7 +14,7 @@ public class WorkConfiguration : IEntityTypeConfiguration<Work>
         builder.Property(x => x.Title).HasMaxLength(150);
         builder.Property(x => x.Description).HasMaxLength(250);
         builder.Property(x => x.SlugUrl).HasMaxLength(150);
-        builder.Property(x => x.CreatedDate).HasColumnName("datetime");
+        builder.Property(x => x.CreatedDate).HasColumnType("datetime");
 
     }
 }
