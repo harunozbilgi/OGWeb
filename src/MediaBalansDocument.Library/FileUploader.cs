@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 namespace MediaBalansDocument.Library;
 
-public class FileUploader
+public  class FileUploader
 {
     private static readonly string local_path = "wwwroot/";
     public static async Task<FileDto> UploadAsync(IFormFile file, string source_path, CancellationToken cancellationToken = default)

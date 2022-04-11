@@ -1,5 +1,6 @@
 using OGWeb.Core;
 using OGWeb.Core.Extensions;
+using OGWeb.Core.Settings;
 using OGWeb.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCore();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-
+builder.Services.Configure<DocumentSetting>(builder.Configuration.GetSection(nameof(DocumentSetting)));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,7 +23,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

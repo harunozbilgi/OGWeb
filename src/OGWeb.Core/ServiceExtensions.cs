@@ -1,6 +1,7 @@
 using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using OGWeb.Core.Settings;
 
 namespace OGWeb.Core;
 

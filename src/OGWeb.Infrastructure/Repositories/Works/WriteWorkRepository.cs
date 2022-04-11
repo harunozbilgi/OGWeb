@@ -27,7 +27,7 @@ public class WriteWorkRepository : IWriteWorkRepository
     {
         var result = await _context.Works.FirstOrDefaultAsync(x => x.Id == workId);
 
-        if (result == null) throw new Exception("not data");
+        if (result == null) throw new ArgumentNullException(nameof(result));
 
         _context.Works.Remove(result);
 

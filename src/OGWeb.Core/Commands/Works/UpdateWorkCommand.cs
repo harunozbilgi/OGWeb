@@ -10,10 +10,10 @@ namespace OGWeb.Core.Commands.Works;
 public class UpdateWorkCommand : IRequest<CustomResponse<NoContent>>
 {
     public Guid Id { get; set; }
-    public string AppSeoCode { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public string SlugUrl { get; set; }
+     public string Keyword_Seo { get; set; }
+    public string Description_Seo { get; set; }
     public DateTime CreatedDate { get; set; }
     public bool? IsActived { get; set; }
 

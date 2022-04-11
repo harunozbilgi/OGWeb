@@ -13,10 +13,10 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
 {
     public string Title { get; set; }
     public string Description { get; set; }
+    public string Keyword_Seo { get; set; }
+    public string Description_Seo { get; set; }
     public DateTime CreatedDate { get; set; }
     public bool? IsActived { get; set; }
-    public IFormFile Cover { get; set; }
-    public List<IFormFile> Files { get; set; }
 
     public class CreateWorkCommandHandler : IRequestHandler<CreateWorkCommand, CustomResponse<WorkDto>>
     {
@@ -37,7 +37,7 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
             {
                 _logger.LogError("eklemek istediginiz alanlar bos");
 
-                throw new Exception("no data");
+                throw new ArgumentNullException(nameof(request));
             }
 
             var work = _mapper.Map<Work>(request);
