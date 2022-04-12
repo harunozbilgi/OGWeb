@@ -7,7 +7,7 @@ using OGWeb.Core.Wrappers;
 
 namespace OGWeb.Core.Queries.AppSeos;
 
-public  class GetAppSeoByIdQuery:IRequest<CustomResponse<AppSeoDto>>
+public class GetAppSeoByIdQuery : IRequest<CustomResponse<AppSeoDto>>
 {
     public Guid Id { get; set; }
 

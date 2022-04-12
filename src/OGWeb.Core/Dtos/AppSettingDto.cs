@@ -1,7 +1,6 @@
-﻿namespace OGWeb.Core.Entities;
+namespace OGWeb.Core.Dtos;
 
-public class AppSetting : BaseEntity
-{
+public class AppSettingDto{
     public string LogoUrl { get; set; }
     public string FaceBook { get; set; }
     public string Instagram { get; set; }

@@ -19,6 +19,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new VideoConfiguration());
         modelBuilder.ApplyConfiguration(new WorkConfiguration());
         modelBuilder.ApplyConfiguration(new WorkFileConfiguration());
+        modelBuilder.ApplyConfiguration(new SliderConfiguraiton());
         base.OnModelCreating(modelBuilder);
     }
 
@@ -28,4 +29,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<OverView> OverViews { get; set; }
     public DbSet<Video> Videos { get; set; }
     public DbSet<WorkFile> WorkFiles { get; set; }
+    public DbSet<Slider> Sliders { get; set; }
 }
