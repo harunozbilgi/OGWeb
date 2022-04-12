@@ -1,42 +1,42 @@
 using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OGWeb.Core.Commands.Videos;
+using OGWeb.Core.Commands.OverViews;
 using OGWeb.Core.Dtos;
-using OGWeb.Core.Queries.Videos;
+using OGWeb.Core.Queries.OverViews;
 
 namespace OGWeb.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class VideosController : CustomControllerBase
+public class OverViewsController : CustomControllerBase
 {
     private readonly IMediator _mediator;
-    public VideosController(IMediator mediator)
+    public OverViewsController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<VideoDto>), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(IEnumerable<OverViewDto>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<IActionResult> GetAll()
     {
-        return CreateActionResult(await _mediator.Send(new GetAllVideoQuery()));
+        return CreateActionResult(await _mediator.Send(new GetAllOverViewQuery()));
     }
 
-    [HttpGet("{videoId}")]
-    [ProducesResponseType(typeof(VideoDto), (int)HttpStatusCode.OK)]
+    [HttpGet("{overViewId}")]
+    [ProducesResponseType(typeof(OverViewDto), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> Get(Guid videoId)
+    public async Task<IActionResult> Get(Guid overViewId)
     {
-        return CreateActionResult(await _mediator.Send(new GetVideoByIdQuery() { Id = videoId }));
+        return CreateActionResult(await _mediator.Send(new GetOverViewByIdQuery() { Id = overViewId }));
     }
 
     [HttpPost]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> Create([FromForm]CreateVideoCommand request)
+    public async Task<IActionResult> Create([FromForm]CreateOverViewCommand request)
     {
         return CreateActionResult(await _mediator.Send(request));
     }
@@ -44,7 +44,7 @@ public class VideosController : CustomControllerBase
     [HttpPut]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> Update([FromForm]UpdateVideoCommand request)
+    public async Task<IActionResult> Update([FromForm]UpdateOverViewCommand request)
     {
         return CreateActionResult(await _mediator.Send(request));
     }
@@ -54,6 +54,6 @@ public class VideosController : CustomControllerBase
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> Delete(Guid videoId)
     {
-        return CreateActionResult(await _mediator.Send(new DeleteVideoCommand() { Id = videoId }));
+        return CreateActionResult(await _mediator.Send(new DeleteOverViewCommand() { Id = videoId }));
     }
 }

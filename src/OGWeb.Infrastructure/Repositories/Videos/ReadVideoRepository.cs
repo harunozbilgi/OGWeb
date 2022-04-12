@@ -21,6 +21,6 @@ public class ReadVideoRepository : IReadVideoRepository
 
     public async Task<IReadOnlyCollection<Video>> GetVideoListAsync()
     {
-        return await _context.Videos.ToListAsync();
+        return await _context.Videos.AsNoTracking().ToListAsync();
     }
 }

@@ -7,7 +7,6 @@ using OGWeb.Core.Wrappers;
 using MediaBalansDocument.Library;
 using OGWeb.Core.Entities;
 using MediaBalansDocument.Library.Helpers;
-using System.Text.Json.Serialization;
 
 namespace OGWeb.Core.Commands.Videos;
 
@@ -15,7 +14,6 @@ public class CreateVideoCommand : IRequest<CustomResponse<NoContent>>
 {
     public string Title { get; set; }
     public string Url { get; set; }
-    [JsonIgnore]
     public IFormFile File { get; set; }
 
     public class CreateVideoCommandHandler : IRequestHandler<CreateVideoCommand, CustomResponse<NoContent>>
@@ -49,14 +47,14 @@ public class CreateVideoCommand : IRequest<CustomResponse<NoContent>>
             {
                 var response = await FileUploader.UploadAsync(request.File, path);
 
-                image_Url = string.Concat(path, response.DocumentName);
+                image_Url += string.Concat(path, response.DocumentName);
                 await ImageHelper.OptimizeAsync(image_Url);
             }
             var video = _mapper.Map<Video>(request);
 
             video.ImageUrl = image_Url;
 
-            var result = _writeRepositoryManager.VideoRepository.CreateVideoAsync(video);
+            await _writeRepositoryManager.VideoRepository.CreateVideoAsync(video);
 
             return CustomResponse<NoContent>.Success(204);
         }

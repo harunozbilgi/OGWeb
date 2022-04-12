@@ -18,4 +18,8 @@
     <ProjectReference Include="..\OGWeb.Infrastructure\OGWeb.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\videos\" />
+  </ItemGroup>
+
 </Project>
