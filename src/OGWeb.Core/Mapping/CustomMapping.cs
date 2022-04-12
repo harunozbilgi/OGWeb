@@ -1,5 +1,6 @@
 using AutoMapper;
 using OGWeb.Core.Commands.AppSeos;
+using OGWeb.Core.Commands.AppSettings;
 using OGWeb.Core.Commands.OverViews;
 using OGWeb.Core.Commands.Videos;
 using OGWeb.Core.Commands.Works;
@@ -36,5 +37,12 @@ public class CustomMapping : Profile
         CreateMap<AppSeo, AppSeoDto>().ReverseMap();
         #endregion
 
+        #region  AppSettingMapping
+        CreateMap<AppSettingCommand, AppSetting>();
+        CreateMap<AppSetting, AppSettingDto>().ReverseMap();
+        #endregion
+
+
     }
 }
+
