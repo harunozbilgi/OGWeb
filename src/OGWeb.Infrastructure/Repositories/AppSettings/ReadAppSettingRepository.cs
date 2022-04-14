@@ -16,7 +16,8 @@ public class ReadAppSettingRepository : IReadAppSettingRepository
 
     public async Task<AppSetting> GetAppSettingByAsync()
     {
-        return await _context.AppSettings.FirstOrDefaultAsync();
+        var result = await _context.AppSettings.FirstOrDefaultAsync();
+        return _context.AppSettings.Any() ? result : new AppSetting();
     }
 
 }

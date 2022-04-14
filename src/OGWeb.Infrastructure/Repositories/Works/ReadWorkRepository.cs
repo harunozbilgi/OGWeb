@@ -13,9 +13,14 @@ public class ReadWorkRepository : IReadWorkRepository
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
+    public async Task<List<WorkFile>> GetAllWorkFileAsync(Guid workId)
+    {
+        return await _context.WorkFiles.Where(x => x.WorkId == workId).ToListAsync();
+    }
+
     public async Task<Work> GetByIdWorkAsync(Guid id)
     {
-        var result = await _context.Works.FindAsync(id);
+        var result = await _context.Works.Include(x => x.WorkFiles).FirstOrDefaultAsync(x => x.Id == id);
         return result;
     }
 

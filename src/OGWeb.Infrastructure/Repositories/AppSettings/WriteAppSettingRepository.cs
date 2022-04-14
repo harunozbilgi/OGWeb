@@ -26,8 +26,14 @@ public class WriteAppSettingRepository : IWriteAppSettingRepository
         else
         {
             var result = await _context.AppSettings.FirstOrDefaultAsync();
-            appSetting.Id = result.Id;
-            _context.AppSettings.Update(appSetting);
+            result.LogoUrl = appSetting.LogoUrl;
+            result.FaceBook = appSetting.FaceBook;
+            result.Instagram = appSetting.Instagram;
+            result.LinkedIn = appSetting.LinkedIn;
+            result.YouTube = appSetting.YouTube;
+            result.Twitter = appSetting.Twitter;
+            result.GooglePixel = appSetting.GooglePixel;
+            _context.AppSettings.Update(result);
             await _context.SaveChangesAsync();
             return result;
         }

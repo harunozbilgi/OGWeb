@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OGWeb.Core.Commands.AppSeos;
 using OGWeb.Core.Dtos;

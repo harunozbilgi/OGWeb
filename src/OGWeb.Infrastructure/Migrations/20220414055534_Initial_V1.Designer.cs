@@ -11,7 +11,7 @@ using OGWeb.Infrastructure.Context;
 namespace OGWeb.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220409202801_Initial_V1")]
+    [Migration("20220414055534_Initial_V1")]
     partial class Initial_V1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,12 +30,6 @@ namespace OGWeb.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(250)
                         .HasColumnType("varchar(250)");
-
-                    b.Property<bool?>("IsDynamic")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<bool?>("IsStatic")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Keyword")
                         .HasMaxLength(250)
@@ -67,10 +61,6 @@ namespace OGWeb.Infrastructure.Migrations
                     b.Property<string>("GooglePixel")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
                     b.Property<string>("Instagram")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
@@ -82,9 +72,6 @@ namespace OGWeb.Infrastructure.Migrations
                     b.Property<string>("LogoUrl")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Twitter")
                         .HasMaxLength(150)
@@ -126,6 +113,25 @@ namespace OGWeb.Infrastructure.Migrations
                     b.ToTable("OverViews");
                 });
 
+            modelBuilder.Entity("OGWeb.Core.Entities.Slider", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sliders");
+                });
+
             modelBuilder.Entity("OGWeb.Core.Entities.Video", b =>
                 {
                     b.Property<Guid>("Id")
@@ -155,10 +161,6 @@ namespace OGWeb.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("AppSeoCode")
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime");
 
@@ -166,8 +168,16 @@ namespace OGWeb.Infrastructure.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("varchar(250)");
 
+                    b.Property<string>("Description_Seo")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
                     b.Property<bool?>("IsActived")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Keyword_Seo")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("SlugUrl")
                         .HasMaxLength(150)
@@ -191,9 +201,6 @@ namespace OGWeb.Infrastructure.Migrations
                     b.Property<string>("ImageUrl")
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
-
-                    b.Property<bool?>("IsCover")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid>("WorkId")
                         .HasColumnType("char(36)");

@@ -2,6 +2,7 @@ using AutoMapper;
 using OGWeb.Core.Commands.AppSeos;
 using OGWeb.Core.Commands.AppSettings;
 using OGWeb.Core.Commands.OverViews;
+using OGWeb.Core.Commands.Sliders;
 using OGWeb.Core.Commands.Videos;
 using OGWeb.Core.Commands.Works;
 using OGWeb.Core.Dtos;
@@ -17,6 +18,7 @@ public class CustomMapping : Profile
         CreateMap<CreateWorkCommand, Work>();
         CreateMap<UpdateWorkCommand, Work>();
         CreateMap<Work, WorkDto>().ReverseMap();
+        CreateMap<WorkFile, WorkFileDto>().ReverseMap();
         #endregion
 
         #region  VideoMapping
@@ -40,6 +42,12 @@ public class CustomMapping : Profile
         #region  AppSettingMapping
         CreateMap<AppSettingCommand, AppSetting>();
         CreateMap<AppSetting, AppSettingDto>().ReverseMap();
+        #endregion
+
+        #region  SliderMapping
+        CreateMap<CreateSliderCommand, Slider>();
+        CreateMap<UpdateSliderCommand, Slider>();
+        CreateMap<Slider, SliderDto>().ReverseMap();
         #endregion
 
 

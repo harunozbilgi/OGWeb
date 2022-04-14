@@ -7,4 +7,6 @@ public interface IWriteWorkRepository
     Task<Work> CreateWorkAsync(Work work);
     Task<bool> UpdateWorkAsync(Work work);
     Task<bool> RemoveWorkAsync(Guid workId);
+    Task<bool> CreateWorkFileAsync(WorkFile work);
+    Task<bool> RemoveWorkFileAsync(Guid workId);
 }

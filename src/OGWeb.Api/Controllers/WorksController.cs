@@ -36,7 +36,7 @@ public class WorksController : CustomControllerBase
     [HttpPost]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> Create(CreateWorkCommand request)
+    public async Task<IActionResult> Create([FromForm] CreateWorkCommand request)
     {
         return CreateActionResult(await _mediator.Send(request));
     }
@@ -44,7 +44,7 @@ public class WorksController : CustomControllerBase
     [HttpPut]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> Update(UpdateWorkCommand request)
+    public async Task<IActionResult> Update([FromForm] UpdateWorkCommand request)
     {
         return CreateActionResult(await _mediator.Send(request));
     }
@@ -55,5 +55,14 @@ public class WorksController : CustomControllerBase
     public async Task<IActionResult> Delete(Guid workId)
     {
         return CreateActionResult(await _mediator.Send(new DeleteWorkCommand() { Id = workId }));
+    }
+
+    [HttpDelete]
+    [Route("[action]/{workId}", Name = "WorkFileRemove")]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    public async Task<IActionResult> DeleteWorkFile(Guid workId)
+    {
+        return CreateActionResult(await _mediator.Send(new DeleteWorkFileCommand() { WorkId = workId }));
     }
 }

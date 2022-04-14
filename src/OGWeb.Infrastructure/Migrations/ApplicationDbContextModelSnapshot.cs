@@ -200,9 +200,6 @@ namespace OGWeb.Infrastructure.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
-                    b.Property<bool?>("IsCover")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<Guid>("WorkId")
                         .HasColumnType("char(36)");
 

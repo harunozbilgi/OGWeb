@@ -27,7 +27,7 @@ public class AppSettingsController : CustomControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> Create([FromForm] AppSettingCommand request)
     {

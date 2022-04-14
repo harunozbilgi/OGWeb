@@ -1,4 +1,6 @@
 using AutoMapper;
+using MediaBalansDocument.Library;
+using MediaBalansDocument.Library.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -15,8 +17,8 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
     public string Description { get; set; }
     public string Keyword_Seo { get; set; }
     public string Description_Seo { get; set; }
-    public DateTime CreatedDate { get; set; }
     public bool? IsActived { get; set; }
+    public List<IFormFile> Files { get; set; }
 
     public class CreateWorkCommandHandler : IRequestHandler<CreateWorkCommand, CustomResponse<WorkDto>>
     {
@@ -33,6 +35,8 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
 
         public async Task<CustomResponse<WorkDto>> Handle(CreateWorkCommand request, CancellationToken cancellationToken)
         {
+            string path = "files/works/";
+
             if (request == null)
             {
                 _logger.LogError("eklemek istediginiz alanlar bos");
@@ -41,8 +45,22 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
             }
 
             var work = _mapper.Map<Work>(request);
-
+             
             var result = await _writeRepositoryManager.WorkRepository.CreateWorkAsync(work);
+
+            if (request.Files != null && request.Files.Count > 0)
+            {
+                foreach (var item in request.Files)
+                {
+                    var response_file = await FileUploader.UploadAsync(item, path);
+
+                    string image_Url = string.Concat(path, response_file.DocumentName);
+
+                    await _writeRepositoryManager.WorkRepository.CreateWorkFileAsync(new WorkFile() { WorkId = result.Id, ImageUrl = image_Url });
+                   
+                    await ImageHelper.OptimizeAsync(image_Url);
+                }
+            }
 
             var response = _mapper.Map<WorkDto>(result);
 

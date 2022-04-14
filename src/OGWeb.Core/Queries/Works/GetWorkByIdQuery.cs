@@ -1,8 +1,10 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using OGWeb.Core.Dtos;
 using OGWeb.Core.Interfaces.Repositories;
+using OGWeb.Core.Settings;
 using OGWeb.Core.Wrappers;
 
 namespace OGWeb.Core.Queries.Works;
@@ -15,14 +17,15 @@ public class GetWorkByIdQuery : IRequest<CustomResponse<WorkDto>>
     {
         private readonly IReadRepositoryManager _readRepositoryManager;
         private readonly IMapper _mapper;
-
         private readonly ILogger<GetWorkByIdQueryHandler> _logger;
+        private readonly DocumentSetting _documentSetting;
 
-        public GetWorkByIdQueryHandler(IReadRepositoryManager readRepositoryManager, IMapper mapper, ILogger<GetWorkByIdQueryHandler> logger)
+        public GetWorkByIdQueryHandler(IReadRepositoryManager readRepositoryManager, IMapper mapper, ILogger<GetWorkByIdQueryHandler> logger, IOptions<DocumentSetting> documentSetting)
         {
             _readRepositoryManager = readRepositoryManager;
             _mapper = mapper;
             _logger = logger;
+            _documentSetting = documentSetting.Value;
         }
 
         public async Task<CustomResponse<WorkDto>> Handle(GetWorkByIdQuery request, CancellationToken cancellationToken)
@@ -38,6 +41,12 @@ public class GetWorkByIdQuery : IRequest<CustomResponse<WorkDto>>
             if (result != null)
             {
                 var response = _mapper.Map<WorkDto>(result);
+
+                response.WorkFiles.ForEach(x =>
+                {
+                    x.Image_Url = string.Concat(_documentSetting.StorageUrl, x.ImageUrl);
+                });
+
                 return CustomResponse<WorkDto>.Success(response, 200);
             }
 

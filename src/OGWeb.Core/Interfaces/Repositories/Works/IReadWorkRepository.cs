@@ -6,4 +6,5 @@ public interface IReadWorkRepository
 {
     Task<IReadOnlyCollection<Work>> GetWorkListAsync();
     Task<Work> GetByIdWorkAsync(Guid id);
+    Task<List<WorkFile>> GetAllWorkFileAsync(Guid workId);
 }

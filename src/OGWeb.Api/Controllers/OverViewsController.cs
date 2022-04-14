@@ -52,8 +52,8 @@ public class OverViewsController : CustomControllerBase
     [HttpDelete]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> Delete(Guid videoId)
+    public async Task<IActionResult> Delete(Guid overViewId)
     {
-        return CreateActionResult(await _mediator.Send(new DeleteOverViewCommand() { Id = videoId }));
+        return CreateActionResult(await _mediator.Send(new DeleteOverViewCommand() { Id = overViewId }));
     }
 }

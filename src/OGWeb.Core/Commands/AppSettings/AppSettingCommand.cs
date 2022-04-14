@@ -19,6 +19,7 @@ public class AppSettingCommand : IRequest<CustomResponse<AppSettingDto>>
     public string YouTube { get; set; }
     public string Twitter { get; set; }
     public string GooglePixel { get; set; }
+    public string LogoUrl { get; set; }
     public IFormFile File { get; set; }
 
     public class AppSettingCommandHandler : IRequestHandler<AppSettingCommand, CustomResponse<AppSettingDto>>
@@ -46,22 +47,26 @@ public class AppSettingCommand : IRequest<CustomResponse<AppSettingDto>>
 
                 throw new ArgumentNullException(nameof(request));
             }
+            var appSetting = _mapper.Map<AppSetting>(request);
+
             if (request.File != null)
             {
+                if (string.IsNullOrEmpty(request.LogoUrl))
+                {
+                    FileUploader.FolderRemove(request.LogoUrl);
+                }
                 var responseFile = await FileUploader.UploadAsync(request.File, path);
 
                 image_Url += string.Concat(path, responseFile.DocumentName);
                 await ImageHelper.OptimizeAsync(image_Url);
+                appSetting.LogoUrl = image_Url;
             }
-            var appSetting = _mapper.Map<AppSetting>(request);
-
-            appSetting.LogoUrl = image_Url;
 
             var result = await _writeRepositoryManager.AppSettingRepository.AppSettingAsync(appSetting);
             
             var response = _mapper.Map<AppSettingDto>(result);
 
-            return CustomResponse<AppSettingDto>.Success(response, 204);
+            return CustomResponse<AppSettingDto>.Success(response, 201);
         }
     }
 }

@@ -24,9 +24,7 @@ namespace OGWeb.Infrastructure.Migrations
                     Keyword = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsStatic = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    IsDynamic = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -40,10 +38,6 @@ namespace OGWeb.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     LogoUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ImageUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Title = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FaceBook = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -85,6 +79,22 @@ namespace OGWeb.Infrastructure.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Sliders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Title = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ImageUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sliders", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Videos",
                 columns: table => new
                 {
@@ -107,8 +117,6 @@ namespace OGWeb.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    AppSeoCode = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Title = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
@@ -116,7 +124,11 @@ namespace OGWeb.Infrastructure.Migrations
                     SlugUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    IsActived = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsActived = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    Keyword_Seo = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Description_Seo = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -131,8 +143,7 @@ namespace OGWeb.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     WorkId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     ImageUrl = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsCover = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -162,6 +173,9 @@ namespace OGWeb.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "OverViews");
+
+            migrationBuilder.DropTable(
+                name: "Sliders");
 
             migrationBuilder.DropTable(
                 name: "Videos");
