@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using OGWeb.Core.Entities;
 using OGWeb.Infrastructure.Configurations;
 
@@ -13,14 +14,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new AppSeoConfiguration());
-        modelBuilder.ApplyConfiguration(new AppSettingConfiguraiton());
-        modelBuilder.ApplyConfiguration(new OverViewConfiguration());
-        modelBuilder.ApplyConfiguration(new VideoConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkFileConfiguration());
-        modelBuilder.ApplyConfiguration(new SliderConfiguraiton());
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
     public DbSet<Work> Works { get; set; }
