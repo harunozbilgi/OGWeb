@@ -52,7 +52,7 @@ public class CreateWorkCommand : IRequest<CustomResponse<WorkDto>>
             {
                 foreach (var item in request.Files)
                 {
-                    var response_file = await FileUploader.UploadAsync(item, path);
+                    var response_file = await FileUploader.UploadAsync(item, path, cancellationToken);
 
                     string image_Url = string.Concat(path, response_file.DocumentName);
 

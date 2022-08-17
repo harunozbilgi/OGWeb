@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Video Ekle";
+}
+@using OGWeb.Core.Commands.Videos
+@model CreateVideoCommand
+
+<header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+    <div class="container-fluid px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <h1 class="page-header-title">
+                        <span class="page-header-icon"><i data-feather="file-plus"></i></span>
+                        Video ekle
+                    </h1>
+                </div>
+                <div class="col-12 col-xl-auto mb-3">
+                    <a class="btn btn-sm btn-light text-primary" asp-action="Index">
+                        <i class="me-1" data-feather="arrow-left"></i>
+                        Geri git
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main page content-->
+<div class="container-fluid px-4">
+    <form id="fromloading" asp-controller="Videos" asp-action="Create" enctype="multipart/form-data">
+        <div class="row gx-4">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header">Başlık</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="Title" />
+                        <span class="text-danger"
+                              asp-validation-for="Title"></span>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">Video url</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="Url" />
+                        <span class="text-danger"
+                              asp-validation-for="Title"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-header-actions">
+                    <div class="card-header">
+                        Sabit alanlar
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-0 mt-1">Görsel</h6>
+                        <hr class="mt-2 mb-4">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" asp-for="File">Yükle</label>
+                            <input type="file" class="form-control" multiple asp-for="File">
+                        </div>
+                        <div class="d-grid">
+                            <button class="fw-500 btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

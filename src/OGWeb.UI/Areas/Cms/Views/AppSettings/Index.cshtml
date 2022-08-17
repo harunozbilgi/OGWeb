@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Site Ayarları";
+}
+@using OGWeb.Core.Commands.AppSettings
+@model AppSettingCommand
+
+<header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+    <div class="container-fluid px-4">
+        <div class="page-header-content">
+            <div class="row align-items-center justify-content-between pt-3">
+                <div class="col-auto mb-3">
+                    <div class="page-header-title">
+                        <div class="page-header-icon"><i data-feather="file-plus"></i></div>
+                        Site ayarları
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main page content-->
+<div class="container-fluid px-4">
+    <form id="fromloading" asp-controller="AppSettings" asp-action="Index" enctype="multipart/form-data">
+        @if (Model != null)
+        {
+            <input type="hidden" asp-for="LogoUrl" />
+        }
+        <div class="row gx-4">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header">Facebook</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="FaceBook" />
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">Instagram</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="Instagram" />
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">YouTube</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="YouTube" />
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">LinkedIn</div>
+                    <div class="card-body">
+                        <input class="form-control" type="text" asp-for="LinkedIn" />
+                    </div>
+                </div>
+                <div class="card  mb-4">
+                    <div class="card-header">
+                        Google Analytics
+                    </div>
+                    <div class="card-body">
+                        <textarea class="lh-base form-control" type="text" asp-for="GooglePixel"
+                                  rows="4"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-header-actions">
+                    <div class="card-header">
+                        Sabit alanlar
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-0 mt-1">Site Logo</h6>
+                        <hr class="mt-2 mb-4">
+                        @if (Model != null)
+                        {
+                            if (!string.IsNullOrEmpty(Model.LogoUrl))
+                            {
+                                <div class="m-2">
+                                    <img class="img-account-profile rounded-1 border border-dark"
+                                 style="width: 100%;object-fit: contain;" src="/@Model.LogoUrl">
+                                </div>
+                            }
+                        }
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" asp-for="File">Yükle</label>
+                            <input type="file" class="form-control" asp-for="File">
+                        </div>
+                        <div class="d-grid">
+                            <button class="fw-500 btn btn-primary" type="submit">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

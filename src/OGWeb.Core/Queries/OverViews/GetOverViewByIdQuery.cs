@@ -45,8 +45,6 @@ public class GetOverViewByIdQuery : IRequest<CustomResponse<OverViewDto>>
             if (result != null)
             {
                 var response = _mapper.Map<OverViewDto>(result);
-                response.ImageUrl_One = string.Concat(_documentSetting.StorageUrl, response.ImageUrl_One);
-                response.ImageUrl_Two = string.Concat(_documentSetting.StorageUrl, response.ImageUrl_Two);
                 return CustomResponse<OverViewDto>.Success(response, 200);
             }
 

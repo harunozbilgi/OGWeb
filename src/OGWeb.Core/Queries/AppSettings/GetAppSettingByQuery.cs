@@ -31,8 +31,6 @@ public class GetAppSettingByQuery : IRequest<CustomResponse<AppSettingDto>>
 
             var response = _mapper.Map<AppSettingDto>(result);
 
-            response.ImageUrl = string.Concat(_documentSetting.StorageUrl, response.LogoUrl);
-
             return CustomResponse<AppSettingDto>.Success(response, 200);
         }
     }

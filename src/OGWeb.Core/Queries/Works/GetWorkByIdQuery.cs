@@ -42,11 +42,6 @@ public class GetWorkByIdQuery : IRequest<CustomResponse<WorkDto>>
             {
                 var response = _mapper.Map<WorkDto>(result);
 
-                response.WorkFiles.ForEach(x =>
-                {
-                    x.Image_Url = string.Concat(_documentSetting.StorageUrl, x.ImageUrl);
-                });
-
                 return CustomResponse<WorkDto>.Success(response, 200);
             }
 

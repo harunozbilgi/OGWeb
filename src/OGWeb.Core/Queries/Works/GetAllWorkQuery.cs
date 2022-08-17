@@ -35,11 +35,6 @@ public class GetAllWorkQuery : IRequest<CustomResponse<List<WorkListDto>>>
 
             }).ToList();
 
-            response.ForEach(x =>
-            {
-                x.ImageUrl = string.Concat(_documentSetting.StorageUrl, x.Path);
-            });
-
             return CustomResponse<List<WorkListDto>>.Success(response, 200);
         }
     }

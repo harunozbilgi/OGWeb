@@ -29,11 +29,6 @@ public class GetAllSliderQuery : IRequest<CustomResponse<List<SliderDto>>>
 
             var respone = _mapper.Map<List<SliderDto>>(result);
 
-            respone.ForEach(x =>
-            {
-                x.ImageUrl = string.Concat(_documentSetting.StorageUrl, x.ImageUrl);
-            });
-
             return CustomResponse<List<SliderDto>>.Success(respone, 200);
         }
     }

@@ -51,7 +51,7 @@ public class DeleteWorkFileCommand : IRequest<CustomResponse<bool>>
                 return CustomResponse<bool>.Success(200);
             }
 
-            _logger.LogError($"No record found according to the {request.WorkId} Id you sent.");
+            _logger.LogError("No record found according to the {0} Id you sent.", request.WorkId);
 
             throw new Exception($"No record found according to the {request.WorkId} Id you sent.");
         }

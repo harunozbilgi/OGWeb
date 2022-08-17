@@ -45,7 +45,6 @@ public class GetSliderByIdQuery : IRequest<CustomResponse<SliderDto>>
             if (result != null)
             {
                 var response = _mapper.Map<SliderDto>(result);
-                response.ImageUrl = string.Concat(_documentSetting.StorageUrl, response.ImageUrl);
                 return CustomResponse<SliderDto>.Success(response, 200);
             }
 

@@ -28,11 +28,6 @@ public class GetAllVideoQuery : IRequest<CustomResponse<List<VideoDto>>>
             var result = await _readRepositoryManager.VideoRepository.GetVideoListAsync();
 
             var respone = _mapper.Map<List<VideoDto>>(result);
-
-            respone.ForEach(x =>
-            {
-                x.ImageUrl = string.Concat(_documentSetting.StorageUrl, x.ImageUrl);
-            });
             
             return CustomResponse<List<VideoDto>>.Success(respone, 200);
         }

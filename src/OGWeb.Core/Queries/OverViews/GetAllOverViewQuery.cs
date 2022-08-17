@@ -29,12 +29,6 @@ public class GetAllOverViewQuery : IRequest<CustomResponse<List<OverViewDto>>>
 
             var respone = _mapper.Map<List<OverViewDto>>(result);
 
-            respone.ForEach(x =>
-            {
-                x.ImageUrl_One = string.Concat(_documentSetting.StorageUrl, x.ImageUrl_One);
-                x.ImageUrl_Two = string.Concat(_documentSetting.StorageUrl, x.ImageUrl_Two);
-            });
-
             return CustomResponse<List<OverViewDto>>.Success(respone, 200);
         }
     }

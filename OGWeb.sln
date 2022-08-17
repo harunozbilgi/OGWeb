@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OGWeb.Api", "src\OGWeb.Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaBalansDocument.Library", "src\MediaBalansDocument.Library\MediaBalansDocument.Library.csproj", "{491DB108-4C5A-47EA-A9F7-E0DA53A6786A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGWeb.UI", "src\OGWeb.UI\OGWeb.UI.csproj", "{B71472C2-BBBD-48E1-B32A-2209F8600F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{491DB108-4C5A-47EA-A9F7-E0DA53A6786A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{491DB108-4C5A-47EA-A9F7-E0DA53A6786A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{491DB108-4C5A-47EA-A9F7-E0DA53A6786A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71472C2-BBBD-48E1-B32A-2209F8600F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71472C2-BBBD-48E1-B32A-2209F8600F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71472C2-BBBD-48E1-B32A-2209F8600F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71472C2-BBBD-48E1-B32A-2209F8600F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{185F6640-FC89-4B44-8D29-3DD6672CB55E} = {B9FB576E-D665-4F38-AFC8-4DBB73B0836B}
 		{2A24A823-3159-40C7-A8D3-9D798B209D2A} = {B9FB576E-D665-4F38-AFC8-4DBB73B0836B}
 		{491DB108-4C5A-47EA-A9F7-E0DA53A6786A} = {B9FB576E-D665-4F38-AFC8-4DBB73B0836B}
+		{B71472C2-BBBD-48E1-B32A-2209F8600F54} = {B9FB576E-D665-4F38-AFC8-4DBB73B0836B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73C410FC-31C8-46F7-B641-12E87C280BFD}

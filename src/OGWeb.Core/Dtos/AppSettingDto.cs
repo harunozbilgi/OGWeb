@@ -1,7 +1,6 @@
 namespace OGWeb.Core.Dtos;
 
 public class AppSettingDto{
-    public string ImageUrl { get; set; }
     public string LogoUrl { get; set; }
     public string FaceBook { get; set; }
     public string Instagram { get; set; }

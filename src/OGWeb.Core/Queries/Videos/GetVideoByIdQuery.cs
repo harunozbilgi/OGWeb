@@ -45,7 +45,6 @@ public class GetVideoByIdQuery : IRequest<CustomResponse<VideoDto>>
             if (result != null)
             {
                 var response = _mapper.Map<VideoDto>(result);
-                response.ImageUrl = string.Concat(_documentSetting.StorageUrl, response.ImageUrl);
                 return CustomResponse<VideoDto>.Success(response, 200);
             }
 
