@@ -1,0 +1,56 @@
+﻿@using OGWeb.Core.Dtos
+@model List<OverViewDto>
+
+@section Seo{
+    @await Component.InvokeAsync("Seo", new { page = "OverView"  })
+}
+
+<section class="bg-black d-flex flex-column align-items-center justify-content-between pb-3">
+    <div class="container">
+        <div class="section-main pb-5">
+            @foreach (var item in Model)
+            {
+                <div class="about-main d-flex align-items-center justify-content-center">
+                    <div class="row w-100 g-0">
+                        <div class="col-12 col-lg-7 left mb-5 mb-lg-0" data-aos="fade-right" data-aos-offset="100"
+                         data-aos-easing="ease-in-sine">
+                            <h2>@item.Title</h2>
+                            @Html.Raw(item.Description)
+                        </div>
+                        <div class="col-12 col-lg-4 offset-lg-1 right">
+                            <div class="about-big-image" data-aos="fade-left" data-aos-anchor="#example-anchor"
+                             data-aos-offset="600" data-aos-duration="600">
+                                <img src="/@item.ImageUrl_One" alt="">
+                            </div>
+                            <div class="about-small-image" data-aos="fade-left" data-aos-duration="900">
+                                <img src="/@item.ImageUrl_Two" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+</section>
+@section Plugins{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+}
+    @section Scripts{
+    <script>
+        AOS.init({
+            once: 'true'
+        });
+        ScrollReveal().reveal('.widget .video-card', {
+            delay: 500,
+            useDelay: 'onload',
+        })
+
+        ScrollReveal().reveal('.widget .video-card', {
+            delay: 0,
+            interval: 250
+        })
+    </script>
+}

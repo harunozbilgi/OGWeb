@@ -1,0 +1,127 @@
+nav {
+    .navbar-main {position: absolute; width: 100%; top: 40px;
+        @include mobile-display{
+            top: 15px;
+        }
+        .navbar-main-general {
+
+            .navbar-logo {
+                width: 100px;
+                display: block;
+                position: relative;
+                z-index: 2;
+                @include mobile-l{
+                    width: 85px;
+                }
+                .svg,
+                img {
+                    @extend %img-size;
+                }
+            }
+
+            .menu-navbar { position: relative; z-index: 10; 
+
+                .nav-icons-check { position: absolute; display: block; height: 32px; width: 32px; top: 0px; left: 0px; z-index: 999; opacity: 0; cursor: pointer; }
+
+                .hamburger-lines { display: block; height: 25px; width: 32px; position: relative; z-index: 998;
+                     display: flex; flex-direction: column; justify-content: space-between; 
+
+                    .line { display: block; height: 3px; width: 100%; border-radius: 10px; background: #fff; }
+
+                    .line1 { transform-origin: 0% 0%; transition: transform 0.2s ease-in-out; width: 23px; margin-left: auto; }
+
+                    .line2 { transition: transform 0.2s ease-in-out; }
+
+                    .line3 { transform-origin: 0% 100%; transition: transform 0.2s ease-in-out; width: 15px; margin-left: auto; }
+                }
+
+                .nav-icons-check {
+                    &:checked {
+                        ~.toggle { position: fixed;  display: block; 
+                            .menu-list{
+                                .menu-item{
+                                    animation: card-in $anim-speed linear; animation-fill-mode: forwards; animation-delay: 500ms; opacity: 0; 
+
+                                    @for $i from 1 through 6 {
+                                        &:nth-child(#{$i}) { animation-delay: $i * 180ms; }
+                                    }
+                                    
+                                    @keyframes card-in { 
+                                        0% { opacity: 0;   -webkit-transform: scale(0.5);
+                                            transform: scale(0.5); }
+                        
+                                        100% { opacity: 1;     -webkit-transform: scale(1);
+                                            transform: scale(1); }
+                                    }
+                                }
+                            }
+                        }
+
+                        ~.overlay-body { @extend %transition; opacity: 0.3; visibility: visible; }
+
+                        ~.hamburger-lines {
+
+                            .line1 { transform: rotate(45deg); background: #fff; width: inherit !important;  margin-left: 7px;}
+
+                            .line2 { transform: scaleY(0); background: #fff;  width: inherit !important; margin-left: 7px;}
+
+                            .line3 { transform: rotate(-45deg); background: #fff; width: inherit !important; margin-left: 7px;; }
+                        }
+                    }
+                }
+
+                .toggle { overflow: hidden; width: 100%; height: 100vh; z-index: 0; top: 0px; bottom: 0; right: 0px;
+                    display: none; @include menus-anıme;
+                    background-color: #7f7f7f; position: fixed; transition: all 0.3s linear; 
+
+     
+                 .menu-list { width: 100%;  height: 227px;              width: 100%;  background-color: #292929;
+                    @include mobile-display{
+                        height: 61vh;
+                    }
+                    .menu-item { margin-bottom: 10px; cursor: pointer; position: relative; 
+                        @include margin-right(70px);
+                        @include mobile-display{
+                            margin-right: 0px;
+                            margin-bottom: 25px;
+                        }
+                        &:last-child{
+                            margin-right: 0px;
+                        }
+                        .menu-links { @include semibold; @include font-size(18px); color: #fff; 
+                            text-decoration: none;  display: block;  position: relative;
+                            @extend %transition; 
+                            @include mobile-l { font-size: 16px; }
+                            &.active,
+                            &:hover{
+                                &::after{
+                                    opacity: 1;
+                                }
+                            }
+                            &:after{
+                                content: '';
+                                height: 3px;
+                                width: 30px;
+                                background-color: #fff;
+                                position: absolute;
+                                @extend %transition2;
+                                bottom: -10px;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                                opacity: 0;
+                            }
+                        }
+
+                    }
+                }
+                
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

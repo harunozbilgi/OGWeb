@@ -1,0 +1,10 @@
+.partner-heading{
+    color: #ffffff;
+    @include font-size(36px);
+    color: #fff;
+    @include bold;
+    margin-top: 170px;
+    @include mobile-display{
+        margin-top: 120px;
+    }
+}

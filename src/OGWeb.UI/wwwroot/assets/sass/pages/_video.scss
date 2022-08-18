@@ -1,0 +1,38 @@
+.video-main{
+    .video-card{
+        height: 366px;
+        border-radius: 20px;
+        overflow: hidden;
+        @include desktop-l{
+            height: 300px;
+        }
+        @include desktop-sm{
+            height: 250px;
+        }
+
+        @include mobile-xl{
+            height: 211px;
+        }
+        @include mobile-l{
+            height: 210px;
+        }
+        &::before{
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        i{
+            color: #fff;
+            @include font-size(40px);
+        }
+    }
+}

@@ -1,0 +1,42 @@
+﻿@using OGWeb.Core.Dtos
+@model List<WorkListDto>
+
+@section Seo{
+    @await Component.InvokeAsync("Seo", new { page = "Work"  })
+}
+
+
+<section class="bg-black d-flex flex-column align-items-center justify-content-between pb-3">
+    <div class="container">
+        <div class="section-main pb-5">
+            <div class="work-main d-flex align-items-center flex-column">
+                <p class="partner-heading text-center">Works</p>
+                <div class="work-cols-main">
+                    @foreach (var item in Model)
+                    {
+                        <a asp-controller="Home" asp-action="WorkDetail" asp-route-id="@item.Id" class="works-card">
+                            <img class="works-image" src="/@item.Path" alt="works">
+                            <p class="position-absolute top-50 start-50 translate-middle">
+                                @item.Title
+                            </p>
+                            <i class="bi bi-arrow-right-short"></i>
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+</section>
+@section Plugins{
+    <script src="https://unpkg.com/scrollreveal"></script>
+}
+    @section Scripts{
+    <script>
+        ScrollReveal().reveal('.work-cols-main .works-card', {
+            delay: 0,
+            interval: 180
+        });
+    </script>
+}

@@ -1,0 +1,11 @@
+﻿@using OGWeb.Core.Dtos
+@model AppSeoDto
+
+@if (Model != null)
+{
+    <meta name="title" content="@Model.Title">
+    <meta name="description" content="@Model.Description">
+    <meta name="keywords" content="@Model.Keyword">
+
+    <title>@Model.Title </title>
+}

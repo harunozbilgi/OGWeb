@@ -1,9 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using OGWeb.Core.Dtos
+@model List<SliderDto>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-d
+@section Seo{
+    @await Component.InvokeAsync("Seo", new { page = "Home"  })
+}
+
+
+
+@foreach (var item in Model)
+{
+    <section class="home-section bg-black d-flex flex-column align-items-center justify-content-between"
+         style="background-image: url(/@item.ImageUrl);">
+        <div class="container">
+            <div class="section-main">
+                <div class="home-main d-flex align-content-center justify-content-center flex-column">
+                    <div class="home-text">
+                        <h1 class="glitch" data-text="@item.Title">@item.Title</h1>
+                        <h3>Onat Gökçen</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @await Component.InvokeAsync("Footer", new { page = "Home"  })
+    </section>
+}

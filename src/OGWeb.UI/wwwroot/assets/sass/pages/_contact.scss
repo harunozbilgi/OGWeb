@@ -1,0 +1,54 @@
+.contact-main{
+
+    form{
+        @include padding-top(100px);
+        .form-control{
+            @include regular;
+            color: #ffffff;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+            opacity: 1;
+            font-size: 17px;
+            border-radius: 0px;
+            &:focus{
+                box-shadow: none;
+                opacity: 1;
+                ~label{
+                    opacity: 0.6;
+                }
+            }
+        }
+        label{
+            @include regular;
+            color: #ffffff;
+            opacity: 1;
+            font-size: 18px;
+        }
+        .btn-send{
+            color: #fff;
+            padding: 0px;
+            padding-left: 10px;
+            &:hover{
+                i{
+                    transform: translateX(7px)
+                }
+            }
+            i{
+                @include font-size(25px);
+                position: relative;
+                top: 3px;
+                @extend %transition3;
+            }
+        }
+
+
+
+
+
+
+
+
+
+    }
+}

@@ -1,0 +1,52 @@
+﻿@using OGWeb.Core.Dtos
+@model List<VideoDto>
+
+@section Seo{
+    @await Component.InvokeAsync("Seo", new { page = "Video"  })
+}
+
+
+<section class="bg-black d-flex flex-column align-items-center justify-content-between pb-3">
+    <div class="container">
+        <div class="section-main pb-5">
+            <div class="video-main d-flex align-items-center flex-column">
+                <p class="partner-heading text-center">Videos</p>
+                <div class="row row-cols-1 row-cols-md-2 g-5 mt-2">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col widget">
+                            <a href="@item.Url"
+                           class="video-card d-block position-relative glightbox2">
+                                <img src="/@item.ImageUrl" alt="@item.Title">
+                                <i class="bi bi-play-circle-fill position-absolute top-50 start-50 translate-middle"></i>
+                            </a>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+</section>
+@section Plugins{
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+}
+    @section Scripts{
+    <script>
+        var lightbox = GLightbox();
+        var lightboxDescription = GLightbox({
+            selector: '.glightbox2'
+        });
+        ScrollReveal().reveal('.widget .video-card', {
+            delay: 500,
+            useDelay: 'onload',
+        })
+
+        ScrollReveal().reveal('.widget .video-card', {
+            delay: 0,
+            interval: 250
+        })
+    </script>
+}

@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+@section Seo{
+    @await Component.InvokeAsync("Seo", new { page = "Contact"  })
+}
+<section class="bg-black d-flex flex-column align-items-center justify-content-between pb-3">
+    <div class="container">
+        <div class="section-main pb-5">
+            <div class="contact-main d-flex align-items-center flex-column">
+                <p class="partner-heading text-center">Contact</p>
+                <form autocomplete="off" class="col-12 col-lg-9 col-xl-6 col-xxl-4 mx-auto">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Subject</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-send d-flex align-items-center">
+                        Göndər
+                        <i class="bi bi-arrow-right-short ms-3"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+</section>
+@section Plugins{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.2.0/sweetalert2.all.min.js"></script>
+}
+    @section Scripts{
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            iconColor: 'white',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 3000,
+        });
+    </script>
+}

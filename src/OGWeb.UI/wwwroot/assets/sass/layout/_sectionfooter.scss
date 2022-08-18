@@ -1,0 +1,22 @@
+section{
+    .section-footer{
+        z-index: 1;
+        width: 100%;
+        background-color: #000;
+        .section-footers-main{
+            p{
+                color: #8c8c8c;
+                @include medium;
+    
+            }
+            .btn-social{
+                color:  #8c8c8c;
+                @include font-size(25px);
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+
+    }
+}

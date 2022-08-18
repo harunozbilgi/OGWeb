@@ -1,0 +1,46 @@
+.home-section{
+    height: 100vh;
+    background-image: url(/assets/img/image-test/home-index.png);
+    background-repeat: no-repeat;
+    background-position: 0 20%;
+    background-size: cover;
+    display: none;
+    @include mobile-l{
+        background-position: 50% 50%;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .home-main{
+        height: calc(100vh - 70px);
+        @include mobile-l{
+            height: calc(100vh - 121px);
+        }
+        .home-text{
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            @include mobile-l{
+                justify-content: end;
+            }
+            h1{
+                color: #fff;
+                @include font-size(96px);
+                @include bold;
+                @include mobile-l{
+                    @include font-size(60px);
+                }
+            }
+            h3{
+                color: #fff;
+                @include medium;
+                @include font-size(24px);
+                @include onattext;
+            }
+        }
+        
+    }
+}

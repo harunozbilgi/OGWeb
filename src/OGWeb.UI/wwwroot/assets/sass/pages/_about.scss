@@ -1,0 +1,60 @@
+.about-main { padding-top: 220px; 
+    @include desktop-sm{
+        padding-top: 151px;
+    }
+    @include desktop-l{
+        padding-top: 171px;
+    }
+    @include desktop-xl{
+        padding-top: 191px;
+    }
+    @include mobile-xl{
+        padding-top: 103px;
+    }
+    @include mobile-l{
+        padding-top: 75px;
+    }
+    .left {
+        @include padding-top(106px);
+        h2 { @include font-size(36px); color: #fff; @include bold; @include margin-bottom(50px); }
+
+        p { color: #fff; line-height: 24px; @include medium; font-size: 18px;
+            @include mobile-l{
+                font-size: 16px;
+            }
+        }
+    }
+
+    .right { height: 400px; position: relative; 
+        @include mobile-l{
+            height: 328px;
+        }
+        .about-big-image { width: 340px; margin-left: auto; height: 100%; 
+            @include mobile-l{
+                width: 250px;
+            }
+            img { width: 100%; height: 100%; 
+                object-fit: cover; }
+        }
+
+        .about-small-image { position: absolute; top: 60px; width: 231px; height: 272px; left: 0px;
+            @include desktop-sm{
+                left: -43px;
+            }
+            @include mobile-display{
+                left: 164px;
+            }
+            @include mobile-l{
+                left: 53px;
+                width: 176px;
+                height: 201px;
+            }
+            @include mobile-xsm{
+                left: 35px;
+            }
+            img { width: 100%; height: 100%; 
+                object-fit: cover; }
+        }
+
+    }
+}

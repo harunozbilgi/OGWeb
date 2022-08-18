@@ -1,0 +1,57 @@
+﻿@using OGWeb.Core.Dtos
+@model WorkDto
+
+@section Seo{
+
+    <meta name="title" content="@Model.Title">
+    <meta name="keywords" content="@Model.Keyword_Seo">
+    <meta name="description" content="@Model.Description_Seo">
+
+    <title>Model.Title </title>
+}
+
+
+    <section class="work-detail-section bg-black d-flex flex-column align-items-center justify-content-between pb-3">
+        <div class="container">
+            <div class="section-main pb-5">
+                <div class="work-detail-main d-flex align-items-center  flex-column col-12 col-lg-9 col-xl-8 col-xxl-7 mx-auto detail-main">
+                    <h1 class="work-detail-heading">
+                        @Model.Title
+                    </h1>
+                    @Html.Raw(Model.Description)
+                    <div class="swiper mahsul-detay-slider px-4 px-lg-0">
+                        <div class="swiper-wrapper">
+                        @foreach (var item in Model.WorkFiles)
+                        {
+                            <div class="swiper-slide">
+                                <img src="/@item.ImageUrl" class="swiper-lazy" />
+                            </div>
+                        }
+                    </div>
+                    <div class="swiper-navs">
+                        <button class="btn swiper-prev">
+                            <i class="bi bi-arrow-left-short"></i>
+                        </button>
+                        <button class="btn swiper-next">
+                            <i class="bi bi-arrow-right-short"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+</section>
+@section Plugins{
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+}
+    @section Scripts{
+    <script>
+        ScrollReveal().reveal('.work-cols-main .works-card', {
+            delay: 0,
+            interval: 180
+        })
+    </script>
+}

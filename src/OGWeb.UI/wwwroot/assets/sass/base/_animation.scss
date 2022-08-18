@@ -1,0 +1,111 @@
+@mixin menu { -webkit-animation: fade-in 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; animation: fade-in 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; 
+
+  @-webkit-keyframes fade-in {
+    0% { opacity: 0; }
+
+    100% { opacity: 1; }
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+
+    100% { opacity: 1; }
+  }
+
+
+}
+
+@mixin menus-anıme { 
+	-webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+          @-webkit-keyframes swing-in-top-fwd {
+            0% {
+              -webkit-transform: rotateX(-100deg);
+                      transform: rotateX(-100deg);
+              -webkit-transform-origin: top;
+                      transform-origin: top;
+              opacity: 0;
+            }
+            100% {
+              -webkit-transform: rotateX(0deg);
+                      transform: rotateX(0deg);
+              -webkit-transform-origin: top;
+                      transform-origin: top;
+              opacity: 1;
+            }
+          }
+          @keyframes swing-in-top-fwd {
+            0% {
+              -webkit-transform: rotateX(-100deg);
+                      transform: rotateX(-100deg);
+              -webkit-transform-origin: top;
+                      transform-origin: top;
+              opacity: 0;
+            }
+            100% {
+              -webkit-transform: rotateX(0deg);
+                      transform: rotateX(0deg);
+              -webkit-transform-origin: top;
+                      transform-origin: top;
+              opacity: 1;
+            }
+          }
+          
+}
+
+@mixin card-text {
+  -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  @-webkit-keyframes slide-in-left {
+    0% {
+      -webkit-transform: translateX(-70px);
+              transform: translateX(-70px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-left {
+    0% {
+      -webkit-transform: translateX(-70px);
+              transform: translateX(-70px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      opacity: 1;
+    }
+  }
+  
+}
+
+@mixin onattext {
+  -webkit-animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  @-webkit-keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(-100px);
+              transform: translateX(-100px);
+    }
+    100% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(-100px);
+              transform: translateX(-100px);
+    }
+    100% {
+      -webkit-transform: translateX(0px);
+              transform: translateX(0px);
+    }
+  }
+  
+          
+}
